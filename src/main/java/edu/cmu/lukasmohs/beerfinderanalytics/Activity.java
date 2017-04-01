@@ -8,15 +8,15 @@ public class Activity {
    
     private String latitude;
     private String longitude;
-    private String os;
+    private String device;
     private int numberOfAnswers;
     private String timeStamp;
     private int radius;
 
-    public Activity(String latitude, String longitude, String os, int numberOfAnswers, String timeStamp, int radius) {
+    public Activity(String latitude, String longitude, String device, int numberOfAnswers, String timeStamp, int radius) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.os = os;
+        this.device = device;
         this.numberOfAnswers = numberOfAnswers;
         this.timeStamp = timeStamp;
         this.radius = radius;
@@ -30,8 +30,8 @@ public class Activity {
         return longitude;
     }
 
-    public String getOs() {
-        return os;
+    public String getDevice() {
+        return device;
     }
 
     public int getNumberOfAnswers() {

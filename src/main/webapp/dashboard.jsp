@@ -4,6 +4,7 @@
     Author     : lukasmohs
 --%>
 
+<%@page import="java.util.Date"%>
 <%@page import="edu.cmu.lukasmohs.beerfinderanalytics.DashboardModel"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,6 +15,13 @@
     </head>
     <body>
         <h1>Hello to the Beer World!</h1>
-        <%= DashboardModel.getActivities() %>
+        <% for(int i = 0; i < DashboardModel.getActivities().size();i++) { %>
+            Date: <%= new Date(DashboardModel.getActivities().get(i).getTimeStamp()) %>
+            <br/>
+            Answers: <%= new Date(DashboardModel.getActivities().get(i).getNumberOfAnswers()) %>
+            <br/>
+            Device <%= new Date(DashboardModel.getActivities().get(i).getDevice()) %>
+            <br/>
+        <% } %>
     </body>
 </html>

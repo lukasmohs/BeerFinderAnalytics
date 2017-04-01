@@ -2,12 +2,15 @@ package edu.cmu.lukasmohs.beerfinderanalytics;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 /**
  *
@@ -15,7 +18,7 @@ import java.util.Arrays;
  */
 public class DashboardModel {
     
-    public static String getActivities() {
+    public static ArrayList<Activity> getActivities() {
         ArrayList<Activity> activities = new ArrayList<Activity>();
         System.out.println("MyDoc:");
         MongoCredential credential = MongoCredential.createCredential("lukasmohs", "beerfinder", "sesame".toCharArray());
@@ -25,11 +28,18 @@ public class DashboardModel {
         
         DBCollection coll = db.getCollection("activity");
         
-        DBObject myDoc = coll.findOne();
+        DBCursor curser = coll.find();
+        while(curser.hasNext()) {
+            DBObject myDoc = curser.next();
+            JSONTokener tokener = new JSONTokener(myDoc.toString());
+            JSONObject js = new JSONObject(tokener);     
+            System.out.println(myDoc.toString());
+            activities.add(new Activity(js.getString("lat"),js.getString("lon"),js.getString("device"),
+                new Integer(js.getString("numberOfAnswers")),js.getString("timeStamp"),new Integer(js.getString("radius"))));
+        }
         
-        System.out.println(myDoc);
-        
-        return myDoc.toString();
+
+        return activities;
     }
     
 }
