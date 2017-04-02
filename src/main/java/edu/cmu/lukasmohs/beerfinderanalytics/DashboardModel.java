@@ -1,5 +1,6 @@
 package edu.cmu.lukasmohs.beerfinderanalytics;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
@@ -28,7 +29,7 @@ public class DashboardModel {
         
         DBCollection coll = db.getCollection("activity");
         
-        DBCursor curser = coll.find();
+        DBCursor curser = coll.find().sort(new BasicDBObject("timeStamp",-1)).limit(25);
         while(curser.hasNext()) {
             DBObject myDoc = curser.next();
             JSONTokener tokener = new JSONTokener(myDoc.toString());

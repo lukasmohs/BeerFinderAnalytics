@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "BeerFinderAnalytics", urlPatterns = {"/getAnalytics"})
 public class BeerFinderAnalytics extends HttpServlet{
     
+    private static String googleMapsAPIKey = "AIzaSyBRFczRVk2JzEpzyyYdlwoonvjDu3ul2Cc";
+    
 
     @Override
     protected void doGet(HttpServletRequest request,
@@ -41,5 +43,9 @@ public class BeerFinderAnalytics extends HttpServlet{
         view.forward(request, response);
         
 
+    }
+    
+    public static String getGoogleMapsAPIKey() {
+        return googleMapsAPIKey;
     }
 }
