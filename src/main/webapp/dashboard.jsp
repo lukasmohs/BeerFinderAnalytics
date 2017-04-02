@@ -40,6 +40,7 @@
                 <th>Number</th>
                 <th>Date</th>
                 <th>Location</th>
+                <th> Radius </th>
                 <th>Device</th>
                 <th>Number of Answers</th>
             </tr>
@@ -49,6 +50,7 @@
                 <td><%= count %></td>
                 <td><%= new Date(new Long(activity.getTimeStamp())) %></td>
                 <td><%= activity.getLatitude() %>; <%= activity.getLongitude() %></td>
+                <td> <%= activity.getRadius() %> </td>
                 <td><%= activity.getDevice() %></td>
                 <td><%=activity.getNumberOfAnswers() %></td>
             </tr>
