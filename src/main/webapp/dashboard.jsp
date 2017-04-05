@@ -40,8 +40,9 @@
                 <th>Number</th>
                 <th>Date</th>
                 <th>Location</th>
-                <th> Radius </th>
+                <th>Radius </th>
                 <th>Device</th>
+                <th>Operating System</th>
                 <th>Number of Answers</th>
             </tr>
         <% int count = 1; %>
@@ -52,7 +53,8 @@
                 <td><%= activity.getLatitude() %>; <%= activity.getLongitude() %></td>
                 <td> <%= activity.getRadius() %> </td>
                 <td><%= activity.getDevice() %></td>
-                <td><%=activity.getNumberOfAnswers() %></td>
+                <td><%= activity.getOs() %></td>
+                <td><%= activity.getNumberOfAnswers() %></td>
             </tr>
              <% count++; %>
         <% } %>

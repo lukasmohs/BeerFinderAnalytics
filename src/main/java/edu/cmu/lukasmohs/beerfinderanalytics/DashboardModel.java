@@ -35,7 +35,7 @@ public class DashboardModel {
             JSONTokener tokener = new JSONTokener(myDoc.toString());
             JSONObject js = new JSONObject(tokener);     
             System.out.println(myDoc.toString());
-            activities.add(new Activity(js.getString("lat"),js.getString("lon"),js.getString("device"),
+            activities.add(new Activity(js.getString("lat"),js.getString("lon"),js.getString("device"), js.getString("os"),
                 new Integer(js.getString("numberOfAnswers")),js.getString("timeStamp"),new Integer(js.getString("radius"))));
         }
         

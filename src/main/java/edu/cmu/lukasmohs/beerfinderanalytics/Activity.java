@@ -8,12 +8,13 @@ public class Activity {
    
     private String latitude;
     private String longitude;
+    private String os;
     private String device;
     private int numberOfAnswers;
     private String timeStamp;
     private int radius;
 
-    public Activity(String latitude, String longitude, String device, int numberOfAnswers, String timeStamp, int radius) {
+    public Activity(String latitude, String longitude, String device, String os, int numberOfAnswers, String timeStamp, int radius) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.device = device;
@@ -46,5 +47,8 @@ public class Activity {
         return radius;
     }
     
+    public String getOs() {
+        return os;
+    }
     
 }
