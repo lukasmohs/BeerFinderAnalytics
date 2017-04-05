@@ -21,6 +21,7 @@ public class Activity {
         this.numberOfAnswers = numberOfAnswers;
         this.timeStamp = timeStamp;
         this.radius = radius;
+        this.os = os;
     }
 
     public String getLatitude() {
