@@ -4,7 +4,6 @@
     Author     : lukasmohs
 --%>
 
-<%@page import="edu.cmu.lukasmohs.beerfinderanalytics.BeerFinderAnalytics"%>
 <%@page import="edu.cmu.lukasmohs.beerfinderanalytics.Activity"%>
 <%@page import="java.util.Date"%>
 <%@page import="edu.cmu.lukasmohs.beerfinderanalytics.DashboardModel"%>
@@ -13,7 +12,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>BeerFinder Analytics</title>
+        <%-- CSS Styling --%>
         <style>
             table, th, td {
                 border-bottom: 1px solid black;
@@ -45,8 +45,10 @@
                 <th>Operating System</th>
                 <th>Number of Answers</th>
             </tr>
+        <%-- Iterate over the last 25 activitites provided by the model --%>
         <% int count = 1; %>
         <% for(Activity activity : DashboardModel.getActivities()) { %>
+            <%-- Add each activity to one row and separate the information by fields --%>
             <tr >
                 <td><%= count %></td>
                 <td><%= new Date(new Long(activity.getTimeStamp())) %></td>
@@ -59,6 +61,7 @@
              <% count++; %>
         <% } %>
         </table>
+        <%-- Use Google Maps API to display the location of the last requests --%>
         <script>
             
           function initMap() {
@@ -70,7 +73,8 @@
           scrollwheel: false,
           zoom: 2
         });
-
+        
+        <%-- Add labels on the map for each request --%>
         <% int total = count; %>
         <%  count = 1; %>
         <% for(Activity activity : DashboardModel.getActivities()) { %>
@@ -86,7 +90,7 @@
       }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%=BeerFinderAnalytics.getGoogleMapsAPIKey() %>&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%=DashboardModel.getGoogleMapsAPIKey() %>&callback=initMap"
         async defer></script>
     </body>
 </html>
