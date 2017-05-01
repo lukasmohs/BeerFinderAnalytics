@@ -68,4 +68,61 @@ public class DashboardModel {
         return activities;
     }
     
+    
+    /**
+     * Calculates the average time between two requests in minutes
+     * @return a String formatted representation of the average time in minutes
+     */
+    public static String getAverageTimeBetweenRequest() {
+        long sum = 0;
+        long last = 0;
+        long count = 0;
+        // Go through all activities
+        for(Activity a : getActivities()){
+            if(last != 0) {
+                // Except for the first element, calculate the difference of the timestamps and add it to sum
+                sum = sum + (last - new Long(a.getTimeStamp()));
+                count ++;
+            }
+            // Assign the last value the current value of the current activity
+            last = new Long(a.getTimeStamp());
+        }
+        // calculate the average and convert it to minutes
+        return (((sum/count) / (1000*60)) % 60) + " Minutes";
+    }
+    
+    /**
+     * This method calculates the average search radius
+     * @return a String representation of the calculated average
+     */
+    public static String getAverageRadius(){
+        long sum = 0;
+        long count = 0;
+        // Go through all activities
+        for(Activity a : getActivities()){
+            // Add all radiuses together
+            sum += a.getRadius();
+            count++;
+        }
+        // Return average by deviding total by the number
+        return sum/count + " Meters";
+    }
+    
+    /**
+     * This method calculates the average number of returned answers by the Yelp API
+     * @return a String representation of the calculated average
+     */
+    public static String getAverageNumberOfAnswers() {
+        long sum = 0;
+        long count = 0;
+        // Go through all activities
+        for(Activity a : getActivities()){
+            // Add all number of answers together
+            sum += a.getNumberOfAnswers();
+            count++;
+        }
+        // Return average by deviding total by the number
+        return sum/count + " Bars";
+    }
+    
 }

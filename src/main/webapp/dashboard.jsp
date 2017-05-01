@@ -26,6 +26,14 @@
             }
             tr:nth-child(even) {background-color: #f5f5f5}
             tr:hover {background-color: #8e81fb}
+            
+            .stat {
+                text-align: center;
+                float:left;
+                width: 30%;
+                background-color: lightsteelblue;
+                margin-left: 15px;
+            }
         </style>
     </head>
     <body>
@@ -34,7 +42,31 @@
         <div style="height:400px;" id="map"></div>
 
         <br/>
-        <h3> Detail list of the last 25 users </h3>
+        <h3> Usage Statistics </h3>
+        <div class="stat"> 
+            <h4>
+                Average Time between Queries:
+                <br>
+                <%= DashboardModel.getAverageTimeBetweenRequest() %>
+            </h4>
+        </div>
+        <div class="stat"> 
+            <h4>
+                Average Search Radius:
+                <br>
+                <%= DashboardModel.getAverageRadius() %>
+            </h4>
+        </div>
+        <div class="stat"> 
+            <h4>
+                Average Number of Bar Suggestions:
+                <br>
+                <%= DashboardModel.getAverageNumberOfAnswers() %>
+            </h4>
+        </div>
+            <div style="clear: left;"></div> 
+        <br/>
+        <h3> Detail list of the last 25 Requests </h3>
         <table>
             <tr style="font-size: 20px; text-align:center;">
                 <th>Number</th>
