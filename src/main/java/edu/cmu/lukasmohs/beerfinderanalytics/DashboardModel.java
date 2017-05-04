@@ -20,14 +20,14 @@ import org.json.JSONTokener;
  * @author lukasmohs
  */
 public class DashboardModel {
-    // MongoDB credentials
+    // MongoDB credentials from seperate Credentials class
     private static String MONGOUSERNAME = Credentials.getMONGOUSERNAME();
     private static String MONGODBNAME = Credentials.getMONGODBNAME();
     private static String MONGODBCOLLECTIONNAME = Credentials.getMONGODBCOLLECTIONNAME();
     private static char[] MONGOPASSWORD = Credentials.getMONGOPASSWORD();
     private static String MONGODBADRESS = Credentials.getMONGODBADRESS();
     private static int MONGOPORT = Credentials.getMONGOPORT();
-    // Google Maps API key
+    // Google Maps API key from seperate Credentials class
     private static String GOOGLEMAPSAPIKEY = Credentials.getGOOGLEMAPSAPIKEY();
     
     /**
