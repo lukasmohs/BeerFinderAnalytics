@@ -21,14 +21,14 @@ import org.json.JSONTokener;
  */
 public class DashboardModel {
     // MongoDB credentials
-    private static String MONGOUSERNAME = "lukasmohs";
-    private static String MONGODBNAME = "beerfinder";
-    private static String MONGODBCOLLECTIONNAME = "activity";
-    private static char[] MONGOPASSWORD = "sesame".toCharArray();
-    private static String MONGODBADRESS = "ds137110.mlab.com";
-    private static int MONGOPORT = 37110;
+    private static String MONGOUSERNAME = Credentials.getMONGOUSERNAME();
+    private static String MONGODBNAME = Credentials.getMONGODBNAME();
+    private static String MONGODBCOLLECTIONNAME = Credentials.getMONGODBCOLLECTIONNAME();
+    private static char[] MONGOPASSWORD = Credentials.getMONGOPASSWORD();
+    private static String MONGODBADRESS = Credentials.getMONGODBADRESS();
+    private static int MONGOPORT = Credentials.getMONGOPORT();
     // Google Maps API key
-    private static String GOOGLEMAPSAPIKEY = "AIzaSyBRFczRVk2JzEpzyyYdlwoonvjDu3ul2Cc";
+    private static String GOOGLEMAPSAPIKEY = Credentials.getGOOGLEMAPSAPIKEY();
     
     /**
      * 
